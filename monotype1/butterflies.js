@@ -9,7 +9,7 @@ function preload() {
 let butterflies = [];
 let N = 108;
 
-let flySlider, flyLabel;
+let flySlider, flyLabel, sideLabel;
 
 // Circle habitat
 let cx, cy, R;
@@ -22,20 +22,28 @@ function setup() {
   cy = height / 2 + 20;
   R = min(width, height) * 0.38;
 
-  // UI: nervousness 0..10
+  // UI: nervousness slider (centered)
   flySlider = createSlider(0, 10, 0, 0.01);
-  flySlider.position(20, 20);
   flySlider.style("width", "220px");
+  flySlider.position(width / 2 - 110, height - 60);
 
   flyLabel = createDiv("");
-  flyLabel.position(250, 12);
   flyLabel.style("font-family", "system-ui, sans-serif");
   flyLabel.style("font-size", "14px");
   flyLabel.style("font-weight", "700");
+  flyLabel.position(width / 2 + 130, height - 68);
 
-  for (let i = 0; i < N; i++) {
-    butterflies.push(new TextButterfly(randomInCircle(cx, cy, R * 0.85)));
-  }
+  // Side label (editorial)
+  sideLabel = createDiv("Love letters Vol.1");
+  sideLabel.style("font-family", "system-ui, sans-serif");
+  sideLabel.style("font-size", "14px");
+  sideLabel.style("letter-spacing", "0.08em");
+  sideLabel.style("font-weight", "600");
+  sideLabel.style("position", "absolute");
+  sideLabel.style("left", "24px");
+  sideLabel.style("top", "50%");
+  sideLabel.style("transform", "rotate(-90deg) translateX(-50%)");
+  sideLabel.style("transform-origin", "left top");
 }
 
 function draw() {
@@ -43,14 +51,13 @@ function draw() {
 
   // habitat circle
   fill(255, 60, 0);
-  stroke("black");
-  strokeWeight(0);
+  noStroke();
   circle(cx, cy, R * 2);
 
   let fly = flySlider.value();
   let f = fly / 10.0;
 
-  flyLabel.html("<b>Nervousness:</b> " + nf(fly, 1, 2));
+  flyLabel.html("<b>Nervousness</b>");
 
   for (let b of butterflies) {
     b.update(f);
@@ -165,10 +172,9 @@ class TextButterfly {
 
     textFont(myFont);
     textAlign(CENTER, CENTER);
-
     textSize(this.size);
 
-    // left wing (mirrored B)
+    // left wing
     push();
     translate(-this.gap, 0);
     rotate(-flap);
@@ -176,7 +182,7 @@ class TextButterfly {
     text("B", 0, 0);
     pop();
 
-    // body (i)
+    // body
     push();
     translate(0, this.bodyOffset - this.size * 0.2);
     textSize(this.size * 1.2);
@@ -187,7 +193,6 @@ class TextButterfly {
     push();
     translate(this.gap, 0);
     rotate(flap);
-    textSize(this.size);
     text("B", 0, 0);
     pop();
 
