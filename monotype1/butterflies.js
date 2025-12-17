@@ -3,7 +3,7 @@ let bgImg;
 
 function preload() {
   myFont = loadFont("assets/PPEditorialNew-Ultralight.otf");
-  bgImg = loadImage("assets/stomach2.jpeg"); // 👈 your image
+  bgImg = loadImage("assets/stomach2.jpeg");
 }
 
 let butterflies = [];
@@ -22,7 +22,7 @@ function setup() {
   cy = height / 2 + 20;
   R = min(width, height) * 0.38;
 
-  // UI: flyingness 0..10
+  // UI: nervousness 0..10
   flySlider = createSlider(0, 10, 0, 0.01);
   flySlider.position(20, 20);
   flySlider.style("width", "220px");
@@ -31,6 +31,7 @@ function setup() {
   flyLabel.position(250, 12);
   flyLabel.style("font-family", "system-ui, sans-serif");
   flyLabel.style("font-size", "14px");
+  flyLabel.style("font-weight", "700");
 
   for (let i = 0; i < N; i++) {
     butterflies.push(new TextButterfly(randomInCircle(cx, cy, R * 0.85)));
@@ -48,7 +49,8 @@ function draw() {
 
   let fly = flySlider.value();
   let f = fly / 10.0;
-  flyLabel.html("Flyingness: " + nf(fly, 1, 2));
+
+  flyLabel.html("<b>Nervousness:</b> " + nf(fly, 1, 2));
 
   for (let b of butterflies) {
     b.update(f);
