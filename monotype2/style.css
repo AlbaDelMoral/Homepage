@@ -1,0 +1,51 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+/* base reset */
+.heart-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 20px;
+}
+
+/* track (black line) */
+.heart-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: black;
+  border-radius: 1px;
+}
+
+.heart-slider::-moz-range-track {
+  height: 2px;
+  background: black;
+  border-radius: 1px;
+}
+
+/* thumb (black dot) */
+.heart-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  margin-top: -5px; /* centers dot on line */
+  cursor: pointer;
+}
+
+.heart-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}

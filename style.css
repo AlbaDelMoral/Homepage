@@ -1,0 +1,131 @@
+/* -----------------------------
+   FONT
+------------------------------ */
+@font-face {
+  font-family: myFont; /* set name */
+  src: url(fonts/NeueMontreal-Bold.otf); /* url of the font */
+}
+
+/* -----------------------------
+   VARIABLES
+------------------------------ */
+:root {
+  --bg: #ff4ffc;
+  --accent: #000000;
+}
+
+/* -----------------------------
+   RESET
+------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+}
+
+/* -----------------------------
+   STAGE
+------------------------------ */
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* -----------------------------
+   TOP-LEFT LABEL
+------------------------------ */
+.label {
+  position: absolute;
+  top: 1.2%;
+  left: 1.2%;
+  font-weight: 800;
+  font-size: clamp(12px, 1.2vw, 18px);
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  pointer-events: none;
+}
+
+/* -----------------------------
+   SCATTERED LETTER LINKS
+------------------------------ */
+.scatter {
+  font: myFont, "Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  position: absolute;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 80px);
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* underline only on hover */
+.scatter:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* -----------------------------
+   POSITIONS (RESPONSIVE)
+------------------------------ */
+.s-x {
+  left: 2%;
+  top: 34%;
+}
+.s-a {
+  left: 35%;
+  top: 20%;
+}
+.s-m {
+  left: 42%;
+  top: 30%;
+}
+
+.s-d {
+  left: 24%;
+  top: 54%;
+}
+.s-h {
+  left: 8%;
+  top: 71%;
+}
+.s-k {
+  left: 30%;
+  top: 82%;
+}
+
+.s-p {
+  left: 63%;
+  top: 57%;
+}
+.s-b {
+  left: 76%;
+  top: 71%;
+}
+
+.s-u {
+  left: 84%;
+  top: 28%;
+}
+.s-z {
+  left: 89%;
+  top: 38%;
+}
+.s-t {
+  left: 98%;
+  top: 48%;
+  transform: translateX(-100%);
+}
